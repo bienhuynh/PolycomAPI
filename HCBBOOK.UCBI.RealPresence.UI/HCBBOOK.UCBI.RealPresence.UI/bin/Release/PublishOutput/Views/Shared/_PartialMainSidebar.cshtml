@@ -1,0 +1,76 @@
+﻿<div id="sidebar">
+    <!-- Wrapper for scrolling functionality -->
+    <div id="sidebar-scroll">
+        <!-- Sidebar Content -->
+        <div class="sidebar-content">
+            <!-- Brand -->
+            <a href="@Url.Action("Index","Home")" class="sidebar-brand">
+                <i class="gi gi-flash"></i><span class="sidebar-nav-mini-hide"><strong>UCBI</strong>Global</span>
+            </a>
+            <!-- END Brand -->
+            <!-- User Info -->
+            @Html.Partial("_PartialUserInfo")
+            <!-- END User Info -->
+            <!-- Theme Colors -->
+            <!-- Change Color Theme functionality can be found in js/app.js - templateOptions() -->
+            
+            <!-- END Theme Colors -->
+            <!-- Sidebar Navigation -->
+            <ul class="sidebar-nav">
+                <li>
+                    <a href="@Url.Action("index","Home")" class=" active"><i class="gi gi-stopwatch sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Dashboard</span></a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ControlRoomMeeting", "RoomsMeetings")"><i class="gi gi-leaf sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Rooms Meeting</span></a>
+                </li>
+                
+                <li class="sidebar-header">
+                    <span class="sidebar-header-options clearfix"><a href="javascript:void(0)" data-toggle="tooltip" title="Quick Settings"><i class="gi gi-settings"></i></a><a href="javascript:void(0)" data-toggle="tooltip" title="Create the most amazing pages with the widget kit!"><i class="gi gi-lightbulb"></i></a></span>
+                    <span class="sidebar-header-title">Widget Kit</span>
+                </li>
+                <li>
+                    <a href="#"><i class="gi gi-charts sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">User Call</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="gi gi-share_alt sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Message</span></a>
+                </li>
+                @*<li>
+                    <a href="page_widgets_media.html"><i class="gi gi-film sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Media</span></a>
+                </li>
+                <li>
+                    <a href="page_widgets_links.html"><i class="gi gi-link sidebar-nav-icon"></i><span class="sidebar-nav-mini-hide">Links</span></a>
+                </li>*@
+                
+            </ul>
+            <!-- END Sidebar Navigation -->
+            <!-- Sidebar Notifications -->
+            <div class="sidebar-header sidebar-nav-mini-hide">
+                <span class="sidebar-header-options clearfix">
+                    <a href="javascript:void(0)" data-toggle="tooltip" title="Refresh"><i class="gi gi-refresh"></i></a>
+                </span>
+                <span class="sidebar-header-title">Activity</span>
+            </div>
+            @*<div class="sidebar-section sidebar-nav-mini-hide">
+                <div class="alert alert-success alert-alt">
+                    <small>5 min ago</small><br />
+                    <i class="fa fa-thumbs-up fa-fw"></i> You had a new sale ($10)
+                </div>
+                <div class="alert alert-info alert-alt">
+                    <small>10 min ago</small><br />
+                    <i class="fa fa-arrow-up fa-fw"></i> Upgraded to Pro plan
+                </div>
+                <div class="alert alert-warning alert-alt">
+                    <small>3 hours ago</small><br />
+                    <i class="fa fa-exclamation fa-fw"></i> Running low on space<br /><strong>18GB in use</strong> 2GB left
+                </div>
+                <div class="alert alert-danger alert-alt">
+                    <small>Yesterday</small><br />
+                    <i class="fa fa-bug fa-fw"></i> <a href="javascript:void(0)"><strong>New bug submitted</strong></a>
+                </div>
+            </div>*@
+            <!-- END Sidebar Notifications -->
+        </div>
+        <!-- END Sidebar Content -->
+    </div>
+    <!-- END Wrapper for scrolling functionality -->
+</div>

@@ -12,8 +12,10 @@ namespace HCBBOOK.UCBI.Core.RealPresence.Models.API
         [Display(Name ="Username")]
         [StringLength(50), Required]
         public string userName { get; set; }
+
         [Display(Name = "Password")]
-        [StringLength(50), Required]
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long", MinimumLength = 6), Required]
+        [DataType(DataType.Password)]
         public string password { get; set; }
     }
 }

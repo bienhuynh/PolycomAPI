@@ -1,0 +1,64 @@
+﻿<ul class="nav navbar-nav-custom pull-right">
+    <!-- Alternative Sidebar Toggle Button -->
+    <li>
+        <!-- If you do not want the main sidebar to open when the alternative sidebar is closed, just remove the second parameter: App.sidebar('toggle-sidebar-alt'); -->
+        <a href="javascript:void(0)" onclick="App.sidebar('toggle-sidebar-alt', 'toggle-other');this.blur();">
+            <i class="gi gi-share_alt"></i>
+            <span class="label label-primary label-indicator animation-floating">4</span>
+        </a>
+    </li>
+    <!-- END Alternative Sidebar Toggle Button -->
+    <!-- User Dropdown -->
+    <li class="dropdown">
+        <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="~/Content/img/placeholders/avatars/avatar2.jpg" alt="avatar" /> <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-custom dropdown-menu-right">
+            <li class="dropdown-header text-center">Account</li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-envelope-o fa-fw pull-right"></i>
+                    <span class="badge pull-right">5</span>
+                    Messages
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-user fa-fw pull-right"></i>
+                    Profile
+                </a>
+                <!-- Opens the user settings modal that can be found at the bottom of each page (page_footer.html in PHP version) -->
+                <a href="#modal-user-settings" data-toggle="modal">
+                    <i class="fa fa-cog fa-fw pull-right"></i>
+                    Settings
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="@Url.Action("Lock","Auth")"><i class="fa fa-lock fa-fw pull-right"></i> Lock Account</a>
+                <a href="@Url.Action("Logout","Auth")"><i class="fa fa-ban fa-fw pull-right"></i> Logout</a>
+            </li>
+            <li class="dropdown-header text-center">Activity</li>
+            @*<li>
+                <div class="alert alert-success alert-alt">
+                    <small>5 min ago</small><br />
+                    <i class="fa fa-thumbs-up fa-fw"></i> You had a new sale ($10)
+                </div>
+                <div class="alert alert-info alert-alt">
+                    <small>10 min ago</small><br />
+                    <i class="fa fa-arrow-up fa-fw"></i> Upgraded to Pro plan
+                </div>
+                <div class="alert alert-warning alert-alt">
+                    <small>3 hours ago</small><br />
+                    <i class="fa fa-exclamation fa-fw"></i> Running low on space<br /><strong>18GB in use</strong> 2GB left
+                </div>
+                <div class="alert alert-danger alert-alt">
+                    <small>Yesterday</small><br />
+                    <i class="fa fa-bug fa-fw"></i> <a href="javascript:void(0)" class="alert-link">New bug submitted</a>
+                </div>
+            </li>*@
+        </ul>
+    </li>
+    <!-- END User Dropdown -->
+</ul>

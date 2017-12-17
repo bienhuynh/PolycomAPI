@@ -10,13 +10,15 @@ using Mono.Web;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using Newtonsoft.Json;
+using System.Security.Cryptography;
+
 namespace ConsoleApp1
 {
     class Program
     {
         static void Main(string[] args)
         {
-            string server = "record.ucbi-global.com";
+            string server = "record.ucbi-global.com:443";
             //string server = "221.132.28.43:8443";
             string URL = "https://" + server + "/msc/rest/accessToken";
             /// Bat dau chung thuc
@@ -30,10 +32,17 @@ namespace ConsoleApp1
             d.Add("password", "Polycom!23");
             string result = HttpPostRequest(URL, d);
             Console.WriteLine(result);
+
+            string URL1 = "https://admin:Polycom!23@rm.vnmeeting.com:8443/api/rest/remote-alert-profiles";
+            string contentType = "application/vnd.plcm.plcm-remote-alert-profile-list+json";
+            //Console.WriteLine(HttpPostRequest(URL1, "", contentType,contentType));
+            Test_API_Access(URL1);
             Console.ReadLine();
         }
+
         private static string HttpPostRequest(string url, Dictionary<string, string> postParameters)
         {
+            
             string postData = "";
             var json = JsonConvert.SerializeObject(new LoginModel { userName = "admin", password = "Polycom!23"});
             //var json = "start-before: '" + DateTime.Now + "', start-after: '"+DateTime.Now+1+ "', conference-room-identifier: '21345324'";
@@ -72,6 +81,85 @@ namespace ConsoleApp1
             myHttpWebResponse.Close();
 
             return pageContent;
+        }
+
+        private static string HttpPostRequest(string url, string dataJson, string contentType, string accept)
+        {
+            try
+            {
+
+                string postData = dataJson;
+
+                HttpWebRequest myHttpWebRequest = (HttpWebRequest)HttpWebRequest.Create(url);
+                myHttpWebRequest.Method = "POST";
+
+                byte[] data = Encoding.ASCII.GetBytes(postData);
+
+                myHttpWebRequest.ContentType = contentType;
+                myHttpWebRequest.UseDefaultCredentials = true;
+                myHttpWebRequest.PreAuthenticate = true;
+                myHttpWebRequest.Accept = accept;
+                myHttpWebRequest.ContentLength = data.Length;
+
+                Stream requestStream = myHttpWebRequest.GetRequestStream();
+                requestStream.Write(data, 0, data.Length);
+                requestStream.Close();
+
+                HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
+
+                Stream responseStream = myHttpWebResponse.GetResponseStream();
+
+                StreamReader myStreamReader = new StreamReader(responseStream, Encoding.Default);
+
+                string pageContent = myStreamReader.ReadToEnd();
+
+                myStreamReader.Close();
+                responseStream.Close();
+
+                myHttpWebResponse.Close();
+
+                return pageContent;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return "not get data";
+        }
+
+        private static void Test_API_Access(string url)
+        {
+            string MoodysWebstring = url;
+            Uri MoodysWebAddress = new Uri(MoodysWebstring);
+            HttpWebRequest request = WebRequest.Create(MoodysWebAddress) as HttpWebRequest;
+            request.Method = "GET";
+            request.ContentType = "application/vnd.plcm.plcm-conference-list-subscription+json";
+            //request.ContentType = "text/plain";
+            string results = string.Empty;
+            HttpWebResponse response;
+            try
+            {
+                using (response = request.GetResponse() as HttpWebResponse)
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream());
+                    results = reader.ReadToEnd();
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            Console.WriteLine(results);
+        }
+        public static string HmacSha1SignRequest(string privateKey, string valueToHash)
+        {
+            System.Text.ASCIIEncoding encoding = new System.Text.ASCIIEncoding();
+            byte[] keyByte = encoding.GetBytes(privateKey);
+            HMACSHA1 hmacsha1 = new HMACSHA1(keyByte);
+            byte[] messageBytes = encoding.GetBytes(valueToHash);
+            byte[] hashmessage = hmacsha1.ComputeHash(messageBytes);
+            var hashedValue = Convert.ToBase64String(hashmessage);
+            return hashedValue;
         }
     }
 }
