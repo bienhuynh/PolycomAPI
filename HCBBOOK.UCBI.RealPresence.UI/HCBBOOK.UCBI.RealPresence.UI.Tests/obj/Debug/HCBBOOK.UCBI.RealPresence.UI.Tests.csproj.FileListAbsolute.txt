@@ -58,3 +58,4 @@ E:\Projects\Polycom\PolycomAPI\HCBBOOK.UCBI.RealPresence.UI\HCBBOOK.UCBI.RealPre
 E:\Projects\Polycom\PolycomAPI\HCBBOOK.UCBI.RealPresence.UI\HCBBOOK.UCBI.RealPresence.UI.Tests\bin\Debug\EntityFramework.xml
 E:\Projects\Polycom\PolycomAPI\HCBBOOK.UCBI.RealPresence.UI\HCBBOOK.UCBI.RealPresence.UI.Tests\bin\Debug\Microsoft.Owin.Security.Cookies.xml
 E:\Projects\Polycom\PolycomAPI\HCBBOOK.UCBI.RealPresence.UI\HCBBOOK.UCBI.RealPresence.UI.Tests\bin\Debug\Microsoft.Owin.Security.OAuth.xml
+E:\Projects\Polycom\PolycomAPI\HCBBOOK.UCBI.RealPresence.UI\HCBBOOK.UCBI.RealPresence.UI.Tests\bin\Debug\RestSharp.dll

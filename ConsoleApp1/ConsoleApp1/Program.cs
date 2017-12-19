@@ -11,6 +11,8 @@ using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
 using Newtonsoft.Json;
 using System.Security.Cryptography;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace ConsoleApp1
 {
@@ -37,9 +39,36 @@ namespace ConsoleApp1
             string contentType = "application/vnd.plcm.plcm-remote-alert-profile-list+json";
             //Console.WriteLine(HttpPostRequest(URL1, "", contentType,contentType));
             Test_API_Access(URL1);
+
+            /*-----------------------------*/
+            string url = "https://rm.vnmeeting.com:8443/api/rest/conferences";
+            string username = "LOCAL\admin";
+            string password = "Polycom!23";
+            var client = new RestClient
+            {
+                BaseUrl = new Uri(url),
+                Authenticator = new HttpBasicAuthenticator(username, password)
+            };
+            //var client = new RestClient(url);
+            var request = new RestRequest(Method.GET);
+            //request.AddHeader("Cache-Control", "no-cache");
+            //request.AddHeader("Authorization", "Bearer " + resultToken.Token);
+
+            IRestResponse response = client.Execute(request);
+            Console.Write(response.ResponseStatus);
+            /*---------------------------------*/
+
+            string encoded = Convert.ToBase64String(Encoding.GetEncoding("ISO-8859-1").GetBytes($"{username}:{password}"));
+            var client1 = new RestClient(url);
+            var request1 = new RestRequest(Method.GET);
+            request1.AddHeader("Accept", "application/vnd.plcm.plcm-conference-list+json");
+            request.AddHeader("Authorization", $"Basic {encoded}");
+            IRestResponse response1 = client.Execute(request1);
+            
+            Console.Write(response1.Content);
+
             Console.ReadLine();
         }
-
         private static string HttpPostRequest(string url, Dictionary<string, string> postParameters)
         {
             

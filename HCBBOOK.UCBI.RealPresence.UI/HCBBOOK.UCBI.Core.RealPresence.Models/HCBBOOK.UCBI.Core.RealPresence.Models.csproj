@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="API\JsonRequestlogin.cs" />
     <Compile Include="API\JsonResultLogin.cs" />
+    <Compile Include="App\ConferenceRoom.cs" />
     <Compile Include="App\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

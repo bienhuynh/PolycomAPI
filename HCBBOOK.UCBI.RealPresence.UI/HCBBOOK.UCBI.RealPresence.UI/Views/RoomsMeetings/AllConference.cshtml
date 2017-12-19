@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<HCBBOOK.UCBI.Core.RealPresence.Models.App.ConferenceRoom>
+@using HCBBOOK.UCBI.Core.RealPresence.Models.App;
 @{
     ViewBag.Title = "AllConference";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,88 +14,92 @@
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <!-- Advanced Specific Theme Color Widget -->
-        <div class="widget">
-            <div class="widget-advanced">
-                <!-- Widget Header -->
-                <div class="widget-header text-center themed-background-dark-flatie">
-                    <h3 class="widget-content-light">
-                        <a href="javascript:void(0)" class="themed-color-flatie">Best Movies Ever</a><br>
-                        <small>Top 200</small>
-                    </h3>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <!-- Advanced Specific Theme Color Widget -->
+            <div class="widget">
+                <div class="widget-advanced">
+                    <!-- Widget Header -->
+                    <div class="widget-header text-center themed-background-dark-flatie">
+                        <h3 class="widget-content-light">
+                            <a href="@Url.Action("ControlRoomMeeting","RoomsMeetings")" class="themed-color-flatie">@item.name</a><br>
+                            <small>Not Active</small>
+                        </h3>
+                    </div>
+                    <!-- END Widget Header -->
+                    <!-- Widget Main -->
+                    <div class="widget-main">
+                        <a href="javascript:void(0)" class="widget-image-container animation-bigEntrance">
+                            <span class="widget-icon themed-background-flatie"><i class="gi gi-film"></i></span>
+                        </a>
+                        <table class="table table-borderless table-striped table-condensed table-vcenter">
+                            <tbody>
+                                <tr>
+                                    <td style="width: 10px;">01</td>
+                                    <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
+                                    <td class="text-right">160 min</td>
+                                    <td class="text-center" style="width: 70px;">
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>02</td>
+                                    <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
+                                    <td class="text-right">182 min</td>
+                                    <td class="text-center">
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>03</td>
+                                    <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
+                                    <td class="text-right">123 min</td>
+                                    <td class="text-center">
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>04</td>
+                                    <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
+                                    <td class="text-right">119 min</td>
+                                    <td class="text-center">
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>05</td>
+                                    <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
+                                    <td class="text-right">152 min</td>
+                                    <td class="text-center">
+                                        <div class="btn-group btn-group-xs">
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
+                                            <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-center"><a href="javascript:void(0)">Show all..</a></div>
+                    </div>
+                    <!-- END Widget Main -->
                 </div>
-                <!-- END Widget Header -->
-                <!-- Widget Main -->
-                <div class="widget-main">
-                    <a href="javascript:void(0)" class="widget-image-container animation-bigEntrance">
-                        <span class="widget-icon themed-background-flatie"><i class="gi gi-film"></i></span>
-                    </a>
-                    <table class="table table-borderless table-striped table-condensed table-vcenter">
-                        <tbody>
-                            <tr>
-                                <td style="width: 10px;">01</td>
-                                <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
-                                <td class="text-right">160 min</td>
-                                <td class="text-center" style="width: 70px;">
-                                    <div class="btn-group btn-group-xs">
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>02</td>
-                                <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
-                                <td class="text-right">182 min</td>
-                                <td class="text-center">
-                                    <div class="btn-group btn-group-xs">
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>03</td>
-                                <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
-                                <td class="text-right">123 min</td>
-                                <td class="text-center">
-                                    <div class="btn-group btn-group-xs">
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>04</td>
-                                <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
-                                <td class="text-right">119 min</td>
-                                <td class="text-center">
-                                    <div class="btn-group btn-group-xs">
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>05</td>
-                                <td><a href="javascript:void(0)"><strong>Movie Title</strong></a></td>
-                                <td class="text-right">152 min</td>
-                                <td class="text-center">
-                                    <div class="btn-group btn-group-xs">
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Preview"><i class="fa fa-play"></i></a>
-                                        <a href="javascript:void(0)" class="btn btn-default" data-toggle="tooltip" title="Download"><i class="fa fa-cloud-download"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="text-center"><a href="javascript:void(0)">Show all..</a></div>
-                </div>
-                <!-- END Widget Main -->
             </div>
+            <!-- END Advanced Specific Theme Color Widget -->
         </div>
-        <!-- END Advanced Specific Theme Color Widget -->
-    </div>
+    }
+    
 </div>
 

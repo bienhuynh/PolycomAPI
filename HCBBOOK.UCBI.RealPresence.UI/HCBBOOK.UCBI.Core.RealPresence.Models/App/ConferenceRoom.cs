@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HCBBOOK.UCBI.Core.RealPresence.Conference
+namespace HCBBOOK.UCBI.Core.RealPresence.Models.App
 {
-    public class Room
+    public class ConferenceRoom
     {
-        public void Confrence()
-        {
-
-        }
+        public string name { get; set; }
     }
 }

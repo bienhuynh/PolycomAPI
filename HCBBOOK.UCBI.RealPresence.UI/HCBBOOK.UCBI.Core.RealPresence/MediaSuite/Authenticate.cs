@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HCBBOOK.UCBI.Core.RealPresence.MediaSuite
 {
-    public class Authenticate
+    public class Authenticate:IAuthenticate
     {
         /// <summary>
         /// Tick Authenticate login
@@ -30,12 +30,12 @@ namespace HCBBOOK.UCBI.Core.RealPresence.MediaSuite
             this.isLogin = false;
             url = "https://" + ipServer + "/msc/rest/accessToken";
         }
-        private string GetUsername()
+        public string GetUsername()
         {
             return username;
         }
 
-        private void SetUsername(string value)
+        public void SetUsername(string value)
         {
             username = value;
         }
@@ -45,12 +45,12 @@ namespace HCBBOOK.UCBI.Core.RealPresence.MediaSuite
         public string IpServer { get => ipServer; set => ipServer = value; }
         public string Url { get => url; set => url = value; }
         
-        private string GetPassword()
+        public string GetPassword()
         {
             return password;
         }
 
-        private void SetPassword(string value)
+        public void SetPassword(string value)
         {
             password = value;
         }

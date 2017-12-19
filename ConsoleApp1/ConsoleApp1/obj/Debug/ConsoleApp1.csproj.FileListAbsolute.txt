@@ -18,3 +18,4 @@ E:\Projects\Polycom\PolycomAPI\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csp
 E:\Projects\Polycom\PolycomAPI\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
 E:\Projects\Polycom\PolycomAPI\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 E:\Projects\Polycom\PolycomAPI\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+E:\Projects\Polycom\PolycomAPI\ConsoleApp1\ConsoleApp1\bin\Debug\RestSharp.dll

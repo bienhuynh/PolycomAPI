@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HCBBOOK.UCBI.Core.RealPresence.GenaralService
 {
-    public class MyHttpRequest
+    public class MyHttpRequest : IHttpRequest
     {
         public string HttpPostRequestWithToken(string url, string dataJson, string token, string contentType, string accpetHeader)
         {
@@ -103,5 +103,9 @@ namespace HCBBOOK.UCBI.Core.RealPresence.GenaralService
             return "-1";
         }
 
+        public string HttpGetRequest(string url, string data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

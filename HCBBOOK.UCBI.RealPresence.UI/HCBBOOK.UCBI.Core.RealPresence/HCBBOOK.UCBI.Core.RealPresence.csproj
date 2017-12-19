@@ -86,9 +86,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conference\Conferences.cs" />
+    <Compile Include="Conference\IConferences.cs" />
+    <Compile Include="Conference\IUserPolycom.cs" />
+    <Compile Include="Conference\UserPolycom.cs" />
+    <Compile Include="GenaralService\IHttpRequest.cs" />
     <Compile Include="MediaSuite\Authenticate.cs" />
-    <Compile Include="Conference\Room.cs" />
     <Compile Include="GenaralService\HttpRequest.cs" />
+    <Compile Include="MediaSuite\IAuthenticate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
