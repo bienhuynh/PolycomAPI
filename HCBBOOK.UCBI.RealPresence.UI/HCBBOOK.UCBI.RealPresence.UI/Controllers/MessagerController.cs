@@ -9,7 +9,7 @@ namespace HCBBOOK.UCBI.RealPresence.UI.Controllers
     public class MessagerController : Controller
     {
         // GET: Messager
-        public ActionResult Index()
+        public ActionResult Inbox()
         {
             return View();
         }

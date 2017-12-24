@@ -16,10 +16,17 @@ namespace HCBBOOK.UCBI.RealPresence.UI.Controllers
     public class AuthController : Controller
     {
         private string server = "record.ucbi-global.com";
+        private LockScreenModel lockScreen = new LockScreenModel();
+        public AuthController()
+        {
+            
+        }
         // GET: Auth
         [AllowAnonymous]
         public ActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("AllConference", "RoomsMeetings");
             return View();
         }
 
@@ -51,10 +58,47 @@ namespace HCBBOOK.UCBI.RealPresence.UI.Controllers
         
         //User Lock Screen
         [Authorize]
-        public ActionResult Lock(LoginModel login)
+        public ActionResult Lock()
         {
-            FormsAuthentication.SignOut();
+            if(User.Identity.IsAuthenticated)
+            {
+                LockScreenModel lockScreen = new LockScreenModel
+                {
+                    Username = User.Identity.Name,
+                    Password = null
+                };
+
+                FormsAuthentication.SignOut();
+                this.lockScreen.Username = lockScreen.Username;
+                return View("LockScreen", lockScreen);
+            }
+            
             return RedirectToAction("Login", "Auth");
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        
+        public ActionResult LockScreen(LockScreenModel login)
+        {
+            if (login.Username.Count() < 1) 
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            if (ModelState.IsValid)
+            {
+                System.Web.Helpers.AntiForgery.Validate();
+                Authenticate authenticate = new Authenticate(server, login.Username, login.Password);
+                JsonResultLogin resultLogin = authenticate.CheckLogin();
+                if (authenticate.isLogin)
+                {
+                    FormsAuthentication.SetAuthCookie(login.Username, false);
+                    
+                    return RedirectToAction("AllConference", "RoomsMeetings");
+                }
+            }
+            return View(login);
         }
 
         //User Logout

@@ -131,7 +131,43 @@
     <script src="~/Content/js/helpers/gmaps.min.js"></script>
 
     <!-- Load and execute javascript code used only in this page -->
-    <script src="~/Content/js/pages/index.js"></script>
-    <script>$(function () { Index.init(); });</script>
+
+    @switch (ViewBag.PageInit)
+    {
+        //Index
+        case 1:
+            {
+                <script src="~/Content/js/pages/index.js"></script>
+                <script>$(function () { Index.init(); });</script>
+            }
+            break;
+        //Conference
+        case 2:
+            {
+                <script src="~/Content/js/pages/index.js"></script>
+                <script>$(function () { Index.init(); });</script>
+            }
+            break;
+        //Messager
+        case 3:
+            {
+                <script src="~/Content/js/pages/readyChat.js"></script>
+                <script>$(function () { ReadyChat.init(); });</script>
+            }
+            break;
+        //profile
+        case 4:
+            {
+                <script src="js/pages/readyProfile.js"></script>
+                <script>$(function () { ReadyProfile.init(); });</script>
+            }
+            break;
+        default:
+            {
+                <script src="~/Content/js/pages/index.js"></script>
+                <script>$(function () { Index.init(); });</script>
+            }
+            break;
+    }
 </body>
 </html>

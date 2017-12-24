@@ -93,7 +93,7 @@ var ReadyChat = function() {
                         chatTalk
                             .find('ul')
                             .append('<li class="chatui-talk-msg chatui-talk-msg-highlight themed-border animation-expandUp">'
-                                    + '<img src="img/placeholders/avatars/avatar2.jpg" alt="Avatar" class="img-circle chatui-talk-msg-avatar">'
+                                    + '<img src="/Content/img/placeholders/avatars/avatar2.jpg" alt="Avatar" class="img-circle chatui-talk-msg-avatar">'
                                     + $('<div />').text(chatMsg).html()
                                     + '</li>');
 

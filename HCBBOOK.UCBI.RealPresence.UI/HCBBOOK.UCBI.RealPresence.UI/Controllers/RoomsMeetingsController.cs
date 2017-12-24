@@ -23,8 +23,21 @@ namespace HCBBOOK.UCBI.RealPresence.UI.Controllers
         // GET: Rooms
         public ActionResult AllConference()
         {
-            List<ConferenceRoom> model = new List<ConferenceRoom>();
-            return View(model);
+            string url = "https://rm.vnmeeting.com:8443/api/rest/conferences";
+            string username = "admin";
+            string password = "Polycom!23";
+            var client = new RestClient
+            {
+                BaseUrl = new Uri(url),
+                Authenticator = new HttpBasicAuthenticator(username, password)
+            };
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Cache-Control", "no-cache");
+            request.AddHeader("Accept", "application/vnd.plcm.plcm-conference-list+json");
+            //request.AddHeader("Authorization", "Basic YWRtaW46UG9seWNvbSEyMw==");
+            IRestResponse response = client.Execute(request);
+            RootPlcmConference obj = JsonConvert.DeserializeObject<RootPlcmConference>(response.Content);
+            return View(obj);
         }
 
         /// <summary>
@@ -40,48 +53,9 @@ namespace HCBBOOK.UCBI.RealPresence.UI.Controllers
         /// View page table control room meeting
         /// </summary>
         /// <returns></returns>
-        public ActionResult ControlRoomMeeting()
-        {
-            Authenticate auth = new Authenticate("record.ucbi-global.com", "admin", "Polycom!23");
-            JsonResultLogin resultToken = auth.CheckLogin();
-            MyHttpRequest myHttpRequest = new MyHttpRequest();
-            string res = myHttpRequest.HttpPostRequestWithToken(
-                "https://rm.vnmeeting.com:8443/api/rest/conferences",
-                null,
-                resultToken.Token,
-                "application/vnd.plcm.plcm-conference-list+json",
-                "application/vnd.plcm.plcm-conference-list+json"
-                );
-            string url = "https://admin:Polycom!23@rm.vnmeeting.com:8443/api/rest/conferences";
-            string username = "admin";
-            string password = "Polycom!23";
-            var client = new RestClient
-            {
-                BaseUrl = new Uri(url),
-                Authenticator = new HttpBasicAuthenticator(username, password)
-            };
-            //var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            //request.AddHeader("Cache-Control", "no-cache");
-            //request.AddHeader("Authorization", "Bearer " + resultToken.Token);
-            
-            IRestResponse response = client.Execute(request);
-            return View();
-        }
-
         public ActionResult ControlRoomMeeting(string id)
         {
-            Authenticate auth = new Authenticate("record.ucbi-global.com", "admin", "Polycom!23");
-            JsonResultLogin resultToken = auth.CheckLogin();
-            MyHttpRequest myHttpRequest = new MyHttpRequest();
-            string res = myHttpRequest.HttpPostRequestWithToken(
-                "https://rm.vnmeeting.com:8443/api/rest/conferences",
-                null,
-                resultToken.Token,
-                "application/vnd.plcm.plcm-conference-list+json",
-                "application/vnd.plcm.plcm-conference-list+json"
-                );
-            string url = "https://admin:Polycom!23@rm.vnmeeting.com:8443/api/rest/conferences";
+            string url = "https://rm.vnmeeting.com:8443/api/rest/conferences/6969";
             string username = "admin";
             string password = "Polycom!23";
             var client = new RestClient
@@ -89,12 +63,12 @@ namespace HCBBOOK.UCBI.RealPresence.UI.Controllers
                 BaseUrl = new Uri(url),
                 Authenticator = new HttpBasicAuthenticator(username, password)
             };
-            //var client = new RestClient(url);
-            var request = new RestRequest(Method.GET);
-            //request.AddHeader("Cache-Control", "no-cache");
-            //request.AddHeader("Authorization", "Bearer " + resultToken.Token);
-
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Cache-Control", "no-cache");
+            //request.AddHeader("Accept", "application/vnd.plcm.plcm-conference+json");
+            request.AddHeader("Accept", "application/vnd.plcm.plcm-participant-list+json");
             IRestResponse response = client.Execute(request);
+            var obj = JsonConvert.DeserializeObject<object>(response.Content);
             return View();
         }
     }

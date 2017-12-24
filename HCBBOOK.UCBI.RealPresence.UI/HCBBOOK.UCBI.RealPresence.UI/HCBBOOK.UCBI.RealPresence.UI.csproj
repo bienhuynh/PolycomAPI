@@ -902,14 +902,15 @@
     <Content Include="Views\Shared\_PartialSearchForm.cshtml" />
     <Content Include="Views\Shared\_PartialUserInfo.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Views\Auth\Lock.cshtml" />
     <Content Include="Views\Shared\_PartialHeaderLeftNavigation.cshtml" />
     <Content Include="Views\Shared\_PartialHeaderRightNavigation.cshtml" />
     <Content Include="Views\RoomsMeetings\AllConference.cshtml" />
+    <Content Include="Views\Auth\LockScreen.cshtml" />
+    <Content Include="Views\Auth\Profile.cshtml" />
+    <Content Include="Views\Messager\Inbox.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\CallsDialog\" />
-    <Folder Include="Views\Messager\" />
     <Folder Include="Views\UserMeetings\" />
   </ItemGroup>
   <ItemGroup>

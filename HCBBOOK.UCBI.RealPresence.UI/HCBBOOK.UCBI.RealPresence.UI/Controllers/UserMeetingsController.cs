@@ -13,5 +13,32 @@ namespace HCBBOOK.UCBI.RealPresence.UI.Controllers
         {
             return View();
         }
+
+        public bool MuteMic()
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// All participants are unmuted.
+        /// </summary>
+        /// <param name="conferenceId"></param>
+        /// <returns></returns>
+        public bool UnmuteAll(string conferenceId)
+        {
+            return true;
+        }
+
+        /// <summary>
+        /// All participants are muted except for the list of participant identifiers passed in.
+        /// </summary>
+        /// <param name="conferenceId"></param>
+        /// <returns></returns>
+        public bool MuteAllExcept(string conferenceId)
+        {
+            return true;
+        }
+
+        
     }
 }
